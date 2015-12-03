@@ -68,16 +68,16 @@ public class TestNGWikipediaDemo {
         Ctx ctx = (Ctx) threadLocal.get();
         WebDriver driver = ctx.driver;
         try {
-            driver.get("http://wikipedia.org");
+            driver.get(" http://staging.partsandservice.kenworth.com/register");
 
             // Make the browser get the page and check its title
             Assert.assertEquals("Wikipedia", driver.getTitle());
 
             // Check if the launch page elements are there
-            Assert.assertTrue(driver.findElement(By.cssSelector(".central-featured")).isDisplayed());
-            Assert.assertTrue(driver.findElement(By.cssSelector("#searchInput")).isDisplayed());
-            Assert.assertTrue(driver.findElement(By.cssSelector("#searchLanguage")).isDisplayed());
-            Assert.assertTrue(driver.findElement(By.cssSelector(".search-form .formBtn")).isDisplayed());
+            Assert.assertTrue(driver.findElement(By.id("login")).isDisplayed());
+            //Assert.assertTrue(driver.findElement(By.cssSelector("#searchInput")).isDisplayed());
+            //Assert.assertTrue(driver.findElement(By.cssSelector("#searchLanguage")).isDisplayed());
+            //Assert.assertTrue(driver.findElement(By.cssSelector(".search-form .formBtn")).isDisplayed());
         } catch (Exception e) {
             ctx.passed = false;
             throw e;
