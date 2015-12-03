@@ -75,6 +75,7 @@ public class TestNGWikipediaDemo {
 
             // Check if the launch page elements are there
             Assert.assertTrue(driver.findElement(By.id("login")).isDisplayed());
+            driver.findElement(By.linkText("log in")).click();
             //Assert.assertTrue(driver.findElement(By.cssSelector("#searchInput")).isDisplayed());
             //Assert.assertTrue(driver.findElement(By.cssSelector("#searchLanguage")).isDisplayed());
             //Assert.assertTrue(driver.findElement(By.cssSelector(".search-form .formBtn")).isDisplayed());
