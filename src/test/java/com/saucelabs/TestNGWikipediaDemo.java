@@ -71,7 +71,7 @@ public class TestNGWikipediaDemo {
             driver.get(" http://staging.partsandservice.kenworth.com/register");
 
             // Make the browser get the page and check its title
-            Assert.assertEquals("Wikipedia", driver.getTitle());
+            //Assert.assertEquals("Wikipedia", driver.getTitle());
 
             // Check if the launch page elements are there
             Assert.assertTrue(driver.findElement(By.id("login")).isDisplayed());
