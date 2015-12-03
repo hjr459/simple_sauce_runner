@@ -68,29 +68,16 @@ public class TestNGWikipediaDemo {
         Ctx ctx = (Ctx) threadLocal.get();
         WebDriver driver = ctx.driver;
         try {
-            WebDriverWait wait = new WebDriverWait(driver, 15); // wait for a maximum of 5 seconds
-            driver.get("http://staging.partsandservice.kenworth.com/register");
-            if (!(driver.findElements(By.id("logo")).size() != 0)) {
-                System.out.println("verifyElementPresent failed");
-            }
-            wait.until(ExpectedConditions.presenceOfElementLocated(By.linkText("log in")));
-            driver.findElement(By.linkText("log in")).click();
-            if (!driver.findElement(By.tagName("html")).getText().contains("Log In")) {
-                System.out.println("verifyTextPresent failed");
-            }
-            wait.until(ExpectedConditions.presenceOfElementLocated(By.id("email")));
-            driver.findElement(By.id("email")).click();
-            driver.findElement(By.id("email")).clear();
-            driver.findElement(By.id("email")).sendKeys("harry@saucelabs.com");
-            driver.findElement(By.id("password")).click();
-            driver.findElement(By.id("password")).clear();
-            driver.findElement(By.id("password")).sendKeys("Saucelabs1!");
-            driver.findElement(By.id("login-block-login")).click();
-            wait.until(ExpectedConditions.presenceOfElementLocated(By.tagName("html")));
-            if (!driver.findElement(By.tagName("html")).getText().contains("welcome, Harry | logout My Kenworth Dealer")) {
-                System.out.println("verifyTextPresent failed");
-            }
+            driver.get("http://wikipedia.org");
 
+            // Make the browser get the page and check its title
+            Assert.assertEquals("Wikipedia", driver.getTitle());
+
+            // Check if the launch page elements are there
+            Assert.assertTrue(driver.findElement(By.cssSelector(".central-featured")).isDisplayed());
+            Assert.assertTrue(driver.findElement(By.cssSelector("#searchInput")).isDisplayed());
+            Assert.assertTrue(driver.findElement(By.cssSelector("#searchLanguage")).isDisplayed());
+            Assert.assertTrue(driver.findElement(By.cssSelector(".search-form .formBtn")).isDisplayed());
         } catch (Exception e) {
             ctx.passed = false;
             throw e;
@@ -102,3 +89,4 @@ public class TestNGWikipediaDemo {
         verifyLaunch();
     }
  }
+
