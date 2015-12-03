@@ -73,8 +73,9 @@ public class TestNGWikipediaDemo {
             // Make the browser get the page and check its title
             //Assert.assertEquals("Wikipedia", driver.getTitle());
 
-            // Check if the launch page elements are there
+            // Look for login link and then click on it
             Assert.assertTrue(driver.findElement(By.id("login")).isDisplayed());
+            wait.until(ExpectedConditions.presenceOfElementLocated(By.linkText("log in")));
             driver.findElement(By.linkText("log in")).click();
             //Assert.assertTrue(driver.findElement(By.cssSelector("#searchInput")).isDisplayed());
             //Assert.assertTrue(driver.findElement(By.cssSelector("#searchLanguage")).isDisplayed());
